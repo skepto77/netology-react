@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Компоненты
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задание №1. Страница интернет-магазина (функциональный компонент)
 
-## Available Scripts
+===
 
-In the project directory, you can run:
+Необходимо создать React-компонент `ShopItemFunc` (функциональный компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./res/preview.png)
 
-### `npm start`
+### Пример использования
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```jsx
+const item = {
+  brand: 'Tiger of Sweden',
+  title: 'Leonard coat',
+  description: 'Minimalistic coat in cotton-blend',
+  descriptionFull: "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
+  price: 399,
+  currency: '£',
+};
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+// Внутри компонента App
+return (
+  <div className='container'>
+    <div className='background-element'></div>
+    <div className='highlight-window'>
+      <div className='highlight-overlay'></div>
+    </div>
+    <div className='window'>
+      <ShopItemFunc item={item} />
+    </div>
+  </div>
+);
+```
 
-### `npm test`
+### Описание компонента
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Компонент должен иметь один props `item`, в котором он ожидает объект с информацией о товаре со следующими свойствами:
 
-### `npm run build`
+- `brand` — название производителя товара,
+- `title` — название товара,
+- `description` — краткое описание товара,
+- `descriptionFull` — подробное описание товара,
+- `price` — цена товара,
+- `currency` — валюта товара.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Компонент должен создавать DOM элемент следующей структуры:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```html
+<div class="main-content">
+  <h2>Tiger of Sweden</h2>
+  <h1>Leonard coat</h1>
+  <h3>Minimalistic coat in cotton-blend</h3>
+  <div class="description">
+    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.
+  </div>
+  <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+  <div class="divider"></div>
+  <div class="purchase-info">
+    <div class="price">£399.00</div>
+    <button>Добавить в корзину</button>
+  </div>
+</div>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Соответственно название производителя необходимо подставить в `h2`, название товара в `h1`, краткое описание в `<h3>`, подробное описание в `div.description`, цену и валюту в `div.price`. При этом символ валюты должен следовать перед ценой, а цена должна быть представлена с двумя числами после запятой.
 
-### `npm run eject`
+### Реализация
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Реализуйте полноценный проект с помощью create-react-app, не забудьте задействовать prop-types (для item можете использовать либо тип `object`, либо вынести item в класс и использовать `instanceOf`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Используйте расположенный в данном каталоге css для стилизации.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Задание №2. Страница интернет-магазина (class-based компонент),
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+===
 
-## Learn More
+Необходимо создать React-компонент `ShopItemClass` (class-based компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./assets/preview.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Пример использования
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+const item = {
+  brand: 'Tiger of Sweden',
+  title: 'Leonard coat',
+  description: 'Minimalistic coat in cotton-blend',
+  descriptionFull: "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
+  price: 399,
+  currency: '£',
+};
 
-### Code Splitting
+// Внутри компонента App
+return (
+  <div className='container'>
+    <div className='background-element'></div>
+    <div className='highlight-window'>
+      <div className='highlight-overlay'></div>
+    </div>
+    <div className='window'>
+      <ShopItemClass item={item} />
+    </div>
+  </div>
+);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Описание компонента
 
-### Analyzing the Bundle Size
+Компонент должен иметь один props `item`, в котором он ожидает объект с информацией о товаре со следующими свойствами:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `brand` — название производителя товара,
+- `title` — название товара,
+- `description` — краткое описание товара,
+- `descriptionFull` — подробное описание товара,
+- `price` — цена товара,
+- `currency` — валюта товара.
 
-### Making a Progressive Web App
+Компонент должен создавать DOM элемент следующей структуры:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```html
+<div class="main-content">
+  <h2>Tiger of Sweden</h2>
+  <h1>Leonard coat</h1>
+  <h3>Minimalistic coat in cotton-blend</h3>
+  <div class="description">
+    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.
+  </div>
+  <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+  <div class="divider"></div>
+  <div class="purchase-info">
+    <div class="price">£399.00</div>
+    <button>Добавить в корзину</button>
+  </div>
+</div>
+```
 
-### Advanced Configuration
+Соответственно название производителя необходимо подставить в `h2`, название товара в `h1`, краткое описание в `<h3>`, подробное описание в `div.description`, цену и валюту в `div.price`. При этом символ валюты должен следовать перед ценой, а цена должна быть представлена с двумя числами после запятой.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Реализация
 
-### Deployment
+Реализуйте полноценный проект с помощью create-react-app, не забудьте задействовать prop-types (для item можете использовать либо тип `object`, либо вынести item в класс и использовать `instanceOf`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Используйте расположенный в данном каталоге css для стилизации.
