@@ -1,0 +1,13 @@
+.projects {
+  column-count: 5;
+  column-width: 300px;
+}
+.projects__item {
+  margin: 0 auto 15px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.projects__item img {
+  width: 100%;
+}

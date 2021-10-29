@@ -1,0 +1,14 @@
+.products-list.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+/* .products-list.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px 100px;
+} */
