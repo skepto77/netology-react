@@ -22,7 +22,6 @@
 
 .product__title {
   font: 400 24px Roboto, sans-serif;
-
   text-transform: uppercase;
   flex-grow: 1;
 }
@@ -35,12 +34,13 @@
 
 .card .product__price {
   margin-bottom: 20px;
+  line-height: 40px;
 }
 
 .product__price {
   display: block;
   color: #d53d2d;
-  font: 500 18px Roboto, sans-serif;
+  font: 700 18px Roboto, sans-serif;
   text-transform: lowercase;
   flex-grow: 1;
 }
