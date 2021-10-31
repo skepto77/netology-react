@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import './Toolbar.css';
 
 const Toolbar = ({ filters, selected, onSelectFilter }) => {
-  const isSelected = (item) => (item === selected ? 'portfolio__btn portfolio__btn--selected' : 'portfolio__btn');
-
   return (
     <div className='portfolio__menu'>
       {filters.map((filter, idx) => {
         return (
-          <a href='# ' key={idx} onClick={() => onSelectFilter(filter)} className={isSelected(filter)}>
+          <a href='# ' key={idx} onClick={() => onSelectFilter(filter)} className={cn('portfolio__btn', { 'portfolio__btn--selected': filter === selected })}>
             {filter}
           </a>
         );
