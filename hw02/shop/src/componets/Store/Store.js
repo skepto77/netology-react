@@ -5,12 +5,12 @@ import ListView from '../ListView/ListView';
 import { products } from '../../assets/data';
 
 const Store = () => {
-  const [view, setView] = useState(true); // true = CardsView
-  const icon = view ? 'view_list' : 'view_module';
+  const [viewMode, setViewMode] = useState('view_module');
+  const changeViewMode = (viewMode) => (viewMode === 'view_module' ? 'view_list' : 'view_module');
   return (
     <>
-      <IconSwitch icon={icon} onSwitch={() => setView(!view)} />
-      {view ? <CardsView products={products} /> : <ListView products={products} />}
+      <IconSwitch icon={viewMode} onSwitch={() => setViewMode(changeViewMode(viewMode))} />
+      {viewMode === 'view_module' ? <CardsView products={products} /> : <ListView products={products} />}
     </>
   );
 };
