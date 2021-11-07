@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import ListingItem from '../ListingItem/ListingItem';
 
 const Listing = ({ items }) => {
+  if (items.length === 0) {
+    return null;
+  }
   return (
-    items.length > 0 && (
-      <div className='item-list'>
-        {items.map(
-          (item) =>
-            item.state === 'active' && (
-              <ListingItem item={item} key={item.listing_id} />
-            )
-        )}
-      </div>
-    )
+    <div className='item-list'>
+      {items.map((item) => (
+        <ListingItem item={item} key={item.listing_id} />
+      ))}
+    </div>
   );
 };
 

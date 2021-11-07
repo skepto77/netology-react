@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 const ListingItem = ({ item }) => {
+  if (item.state !== 'active') {
+    return null;
+  }
+
   const {
-    listing_id,
     url,
     MainImage: { url_570xN },
     title,

@@ -4,6 +4,9 @@ import Star from '../Star/Star';
 import { times, uniqueId } from 'lodash';
 
 const Stars = ({ count = 0 }) => {
+  if (count === 0) {
+    return null;
+  }
   return (
     <ul className='card-body-stars u-clearfix'>
       {times(count, Number).map((item) => (
