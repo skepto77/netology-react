@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { uniqueId } from 'lodash';
-import Stars from '../Stars/Stars';
 
 const ListingItem = ({ item }) => {
   const {
@@ -31,10 +29,8 @@ const ListingItem = ({ item }) => {
     `level-${quantity <= 10 ? 'low' : quantity <= 20 ? 'medium' : 'high'}`
   );
 
-  const getTitle = (title) =>
+  const getShortTitle = (title) =>
     title.length > 50 ? `${title.substring(0, 50)}...` : title;
-
-  const count = Math.floor(Math.random() * 10);
 
   return (
     <div className='item'>
@@ -42,12 +38,9 @@ const ListingItem = ({ item }) => {
         <a href={url}>{<img src={url_570xN} alt={title} />}</a>
       </div>
       <div className='item-details'>
-        <p className='item-title'>{getTitle(title)}</p>
+        <p className='item-title'>{getShortTitle(title)}</p>
         <p className='item-price'>{getPrice(currency_code)}</p>
         <p className={itemQuantityClass}>{quantity} left</p>
-        {count > 0 && count < 6 && !Number.isNaN(count) && (
-          <Stars count={count} key={uniqueId('stars_')} />
-        )}
       </div>
     </div>
   );

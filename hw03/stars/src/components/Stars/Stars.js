@@ -1,13 +1,14 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import { times, uniqueId } from 'lodash';
 import Star from '../Star/Star';
+import { times, uniqueId } from 'lodash';
 
-const Stars = ({ count }) => {
+const Stars = ({ count = 0 }) => {
   return (
     <ul className='card-body-stars u-clearfix'>
       {times(count, Number).map((item) => (
-        <li>
-          <Star key={uniqueId('star_')} />
+        <li key={uniqueId('star_')}>
+          <Star />
         </li>
       ))}
     </ul>

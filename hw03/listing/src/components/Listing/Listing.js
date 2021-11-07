@@ -20,6 +20,7 @@ const Listing = ({ items }) => {
 Listing.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
+      listing_id: PropTypes.number.isRequired,
       state: PropTypes.string.isRequired,
     })
   ).isRequired,

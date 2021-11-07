@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+ul.card-body-stars {
+  display: flex;
+  justify-content: center;
+  padding-inline-start: 0;
+}
+
+ul.card-body-stars li {
+  list-style-type: none;
+}
