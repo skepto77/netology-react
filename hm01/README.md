@@ -4,7 +4,7 @@
 
 ===
 
-Необходимо создать React-компонент `ShopItemFunc` (функциональный компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./res/preview.png)
+Необходимо создать React-компонент `ShopItemFunc` (функциональный компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./assets/preview.png)
 
 ### Пример использования
 
@@ -13,7 +13,8 @@ const item = {
   brand: 'Tiger of Sweden',
   title: 'Leonard coat',
   description: 'Minimalistic coat in cotton-blend',
-  descriptionFull: "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
+  descriptionFull:
+    "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
   price: 399,
   currency: '£',
 };
@@ -51,9 +52,13 @@ return (
   <h1>Leonard coat</h1>
   <h3>Minimalistic coat in cotton-blend</h3>
   <div class="description">
-    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.
+    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar,
+    concealed front closure and single back vent. Slim fit with clean, straight
+    shape. Above-knee length.
   </div>
-  <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+  <div class="highlight-window mobile">
+    <div class="highlight-overlay"></div>
+  </div>
   <div class="divider"></div>
   <div class="purchase-info">
     <div class="price">£399.00</div>
@@ -74,7 +79,7 @@ return (
 
 ===
 
-Необходимо создать React-компонент `ShopItemClass` (class-based компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./assets/preview.png)
+Необходимо создать React-компонент `ShopItemClass` (class-based компонент), с помощью которого мы могли бы реализовывать представление информации о товарах из нашего каталога на сайте в таком виде (компонент обведён пунктирной линией): ![Внешний вид страницы после реализации компонента](./assets/preview2.png)
 
 ### Пример использования
 
@@ -83,7 +88,8 @@ const item = {
   brand: 'Tiger of Sweden',
   title: 'Leonard coat',
   description: 'Minimalistic coat in cotton-blend',
-  descriptionFull: "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
+  descriptionFull:
+    "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
   price: 399,
   currency: '£',
 };
@@ -121,9 +127,13 @@ return (
   <h1>Leonard coat</h1>
   <h3>Minimalistic coat in cotton-blend</h3>
   <div class="description">
-    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.
+    Men's minimalistic overcoat in cotton-blend. Features a stand-up collar,
+    concealed front closure and single back vent. Slim fit with clean, straight
+    shape. Above-knee length.
   </div>
-  <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+  <div class="highlight-window mobile">
+    <div class="highlight-overlay"></div>
+  </div>
   <div class="divider"></div>
   <div class="purchase-info">
     <div class="price">£399.00</div>
