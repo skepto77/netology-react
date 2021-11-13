@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  font-size: 18px;
+  border: 1px solid #c0c0c0;
+  width: 180px;
+  height: 45px;
+  text-align: center;
+}
+
+.result {
+  color: #fff;
+  width: 178px;
+  margin-top: 5px;
+  padding: 0 10px;
+  text-align: center;
+  line-height: 45px;
+}

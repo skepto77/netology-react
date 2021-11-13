@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.selectFile {
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.result {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.result__item {
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  border-radius: 30px;
+  width: 35px;
+  line-height: 30px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+form,
+input {
+  width: 100%;
+  height: 100%;
+}

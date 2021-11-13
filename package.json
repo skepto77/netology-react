@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/skepto77/netology-react/issues"
   },
-  "homepage": "https://github.com/skepto77/netology-react#readme"
+  "homepage": "https://github.com/skepto77/netology-react#readme",
+  "dependencies": {}
 }
