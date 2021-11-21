@@ -37,7 +37,6 @@ const PhotoList = () => {
           <input type='file' onChange={onSelectHandle} />
         </form>
       </div>
-      {console.log(data)}
       {data.length > 0 && (
         <div className='result'>
           {data.map((image) => (
