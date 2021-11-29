@@ -11,14 +11,13 @@ const dateTimePretty = (Component) => {
   };
 };
 
-const UpgDate = dateTimePretty(DateTime);
+const UpgradedVideo = dateTimePretty(Video);
 
 function DateTime(props) {
   return <p className='date'>{props.date}</p>;
 }
 
 function Video(props) {
-  console.log(props);
   return (
     <div className='video'>
       <iframe
@@ -27,15 +26,14 @@ function Video(props) {
         allow='autoplay; encrypted-media'
         allowFullScreen
       ></iframe>
-      {/* <DateTime date={props.date} /> */}
-      <UpgDate date={props.date} />
+      <DateTime date={props.date} />
     </div>
   );
 }
 
 function VideoList(props) {
   return props.list.map((item, i) => (
-    <Video key={i} url={item.url} date={item.date} />
+    <UpgradedVideo key={i} url={item.url} date={item.date} />
   ));
 }
 
@@ -47,7 +45,7 @@ export default function App() {
     },
     {
       url: 'https://www.youtube.com/embed/dVkK36KOcqs?rel=0&amp;controls=0&amp;showinfo=0',
-      date: '2021-11-23 01:10:00',
+      date: '2021-11-30 01:10:00',
     },
     {
       url: 'https://www.youtube.com/embed/xGRjCa49C6U?rel=0&amp;controls=0&amp;showinfo=0',
