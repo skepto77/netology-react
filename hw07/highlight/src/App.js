@@ -3,19 +3,17 @@ import './App.css';
 
 const setHighlight = (Component) => {
   return (props) => {
-    if (props.views >= 100) {
-      return (
-        <Popular>
-          <Component {...props} />
-        </Popular>
-      );
-    } else {
-      return (
-        <New>
-          <Component {...props} />
-        </New>
-      );
-    }
+    return props.views >= 1000 ? (
+      <Popular>
+        <Component {...props} />
+      </Popular>
+    ) : props.views >= 100 ? (
+      <New>
+        <Component {...props} />
+      </New>
+    ) : (
+      <Component {...props} />
+    );
   };
 };
 
@@ -66,15 +64,15 @@ function Video(props) {
 }
 
 function List(props) {
-  return props.list.map((item) => {
+  return props.list.map((item, i) => {
     switch (item.type) {
       case 'video':
         // return <Video {...item} />;
-        return <UpgVideo {...item} />;
+        return <UpgVideo key={i} {...item} />;
 
       case 'article':
         // return <Article {...item} />;
-        return <UpgArticle {...item} />;
+        return <UpgArticle key={i} {...item} />;
     }
   });
 }
