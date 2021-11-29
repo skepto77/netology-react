@@ -4,14 +4,14 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import './App.css';
 
-const DateTimePretty = (Component) => {
+const dateTimePretty = (Component) => {
   return (props) => {
     const fromNow = moment(props.date).locale('ru').fromNow();
     return <Component {...props} {...{ date: fromNow }} />;
   };
 };
 
-const UpgDate = DateTimePretty(DateTime);
+const UpgDate = dateTimePretty(DateTime);
 
 function DateTime(props) {
   return <p className='date'>{props.date}</p>;
@@ -34,7 +34,9 @@ function Video(props) {
 }
 
 function VideoList(props) {
-  return props.list.map((item) => <Video url={item.url} date={item.date} />);
+  return props.list.map((item, i) => (
+    <Video key={i} url={item.url} date={item.date} />
+  ));
 }
 
 export default function App() {
