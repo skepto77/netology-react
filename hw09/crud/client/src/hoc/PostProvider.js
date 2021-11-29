@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export const PostContext = createContext(null);
 
@@ -7,12 +6,7 @@ export const PostProvider = ({ children }) => {
   const [postsList, setPostsList] = useState([]);
   const [post, setPost] = useState([]);
 
-  const navigate = useNavigate();
-
-  const goBack = () => navigate(-1);
-  const goHome = () => navigate('/', { replace: true });
-
-  const getPosts = async (url) => {
+  const getPosts = async () => {
     try {
       const response = await fetch(`http://localhost:7777/posts`);
       const posts = await response.json();
@@ -41,7 +35,6 @@ export const PostProvider = ({ children }) => {
 
     try {
       await fetch(`http://localhost:7777/posts`, requestOptions);
-      goHome();
     } catch (error) {
       console.error(error);
     }
@@ -64,7 +57,6 @@ export const PostProvider = ({ children }) => {
   const removePost = async (id) => {
     try {
       await fetch(`http://localhost:7777/posts/${id}`, { method: 'DELETE' });
-      goHome();
     } catch (error) {
       console.error(error);
     }
@@ -78,7 +70,6 @@ export const PostProvider = ({ children }) => {
     addPost,
     editPost,
     removePost,
-    goHome,
   };
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;

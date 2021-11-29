@@ -1,14 +1,21 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PostContext } from '../hoc/PostProvider';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 function PostCreate() {
-  const { addPost, goHome } = useContext(PostContext);
+  const { addPost, getPosts } = useContext(PostContext);
   const [post, setPost] = useState('');
+
+  const navigate = useNavigate();
+
+  const goHome = () => navigate('/', { replace: true });
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     addPost(post);
+    getPosts();
+    goHome();
   };
 
   return (

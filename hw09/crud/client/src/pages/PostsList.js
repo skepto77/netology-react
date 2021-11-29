@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 function PostsList() {
-  const { postsList, getPosts } = useContext(PostContext);
+  const { postsList = [], getPosts } = useContext(PostContext);
 
   useEffect(() => {
     getPosts();
   }, []);
+
+  // console.log('upd');
 
   return (
     postsList.length > 0 &&

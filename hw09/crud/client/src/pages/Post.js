@@ -1,14 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PostContext } from '../hoc/PostProvider';
 import { useParams } from 'react-router-dom';
 import { Card, Button, Form, Row, Col } from 'react-bootstrap';
 
 function Post() {
   const { id } = useParams();
-  const { post, getPost, editPost, removePost } = useContext(PostContext);
+  const { post, getPost, getPosts, editPost, removePost } =
+    useContext(PostContext);
   const [postEdited, setPostEdited] = useState('');
   const [viewMode, setViewMode] = useState('view');
+
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
+  const goHome = () => navigate('/', { replace: true });
 
   useEffect(() => {
     getPost(id);
@@ -28,6 +35,12 @@ function Post() {
     setViewMode('view');
   };
 
+  const onRemoveHandler = (id) => {
+    removePost(id);
+    getPosts();
+    goHome();
+  };
+
   return (
     <>
       {viewMode === 'view' ? (
@@ -42,7 +55,10 @@ function Post() {
               >
                 Edit
               </Button>
-              <Button variant='primary' onClick={() => removePost(post.id)}>
+              <Button
+                variant='primary'
+                onClick={() => onRemoveHandler(post.id)}
+              >
                 Delete
               </Button>
             </Card.Footer>
