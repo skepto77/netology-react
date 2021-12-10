@@ -4,13 +4,9 @@ import ListItem from './ListItem';
 
 const List = () => {
   const { items, filter } = useSelector((state) => state.list);
-  const [itemsFiltred, setItemsFiltred] = useState(items);
 
-  useEffect(() => {
-    filter !== ''
-      ? setItemsFiltred(items.filter((item) => item.name.includes(filter)))
-      : setItemsFiltred(items);
-  }, [items, filter]);
+  const itemsFiltred =
+    filter === '' ? items : items.filter((item) => item.name.includes(filter));
 
   return (
     <>
