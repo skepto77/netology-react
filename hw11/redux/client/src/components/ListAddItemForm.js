@@ -12,7 +12,6 @@ const ListAddItemForm = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(fetchAddItem({ name, price, content: '' }));
-    dispatch(fetchItems());
     setName('');
     setPrice('');
   };

@@ -124,6 +124,7 @@ export const fetchRemoveItem = (id) => async (dispatch) => {
 export const fetchAddItem =
   ({ name, price, content }) =>
   async (dispatch) => {
+    dispatch(changeStatus('loading'));
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
@@ -131,9 +132,14 @@ export const fetchAddItem =
     };
 
     try {
-      await fetch('http://localhost:7070/api/services', requestOptions);
+      const response = await fetch('http://localhost:7070/api/services', requestOptions);
+
+      if (!response.ok) {
+        throw new Error('Ошибка при добавлении данных');
+      }
+      dispatch(fetchItems());
     } catch (error) {
-      dispatch(setError('Ошибка при сохранении данных'));
+      dispatch(setError('Ошибка при добавлении данных'));
     }
   };
 
