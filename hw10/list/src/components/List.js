@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import ListItem from './ListItem';
 
 const List = () => {
   const { items, filter } = useSelector((state) => state.list);
 
-  const itemsFiltred =
-    filter === '' ? items : items.filter((item) => item.name.includes(filter));
+  const itemsFiltred = filter === '' ? items : items.filter((item) => item.name.includes(filter));
 
   return (
     <>
