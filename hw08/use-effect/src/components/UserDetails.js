@@ -4,35 +4,54 @@ import Loader from './Loader';
 
 const UserDetails = ({ id }) => {
   const [userDetails, setUserDetails] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      setLoading(false);
+      return null;
+    }
+
     fetch(
       `https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${id}.json`
     )
-      .then((res) => res.json())
-      .then((data) => setUserDetails(data))
-      .catch((err) => console.error(err));
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject('error: ' + res.status)
+      )
+      .then((data) => {
+        setUserDetails(data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
-  return !userDetails ? (
-    !id ? (
-      <></>
-    ) : (
-      <Loader />
-    )
-  ) : (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant='top' src={userDetails.avatar} />
-      <Card.Body>
-        <Card.Title>{userDetails.name}</Card.Title>
-      </Card.Body>
-      <ListGroup className='list-group-flush'>
-        <ListGroupItem>{userDetails.details.city}</ListGroupItem>
-        <ListGroupItem>{userDetails.details.company}</ListGroupItem>
-        <ListGroupItem>{userDetails.details.position}</ListGroupItem>
-      </ListGroup>
-    </Card>
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <p>{error}</p>
+      ) : !userDetails ? (
+        <></>
+      ) : (
+        <>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant='top' src={userDetails.avatar} />
+            <Card.Body>
+              <Card.Title>{userDetails.name}</Card.Title>
+            </Card.Body>
+            <ListGroup className='list-group-flush'>
+              <ListGroupItem>{userDetails.details.city}</ListGroupItem>
+              <ListGroupItem>{userDetails.details.company}</ListGroupItem>
+              <ListGroupItem>{userDetails.details.position}</ListGroupItem>
+            </ListGroup>
+          </Card>
+        </>
+      )}
+    </>
   );
 };
 
